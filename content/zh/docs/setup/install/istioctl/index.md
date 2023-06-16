@@ -8,30 +8,30 @@ test: no
 ---
 
 跟随本指南安装、配置 Istio 网格，用于深入评估及生产发布。
-如果您是 Istio 新手，只想简单尝试，请参考[快速入门指南](/zh/docs/setup/getting-started)。
+如果您是 Istio 新手，只想简单尝试，请参考[快速入门指南](/content/zh/docs/setup/getting-started)。
 
-本安装指南使用命令行工具 [istioctl](/zh/docs/reference/commands/istioctl/)，
+本安装指南使用命令行工具 [istioctl](/content/zh/docs/reference/commands/istioctl/)，
 它提供丰富的定制功能，用于定制 Istio 控制平面以及数据平面 Sidecar。
 它还提供用户输入验证功能，这有助于防止安装错误；提供定制选项，可以覆盖配置的任何方面。
 
-使用这些说明，您可以选取任意一个 Istio 内置的[配置档](/zh/docs/setup/additional-setup/config-profiles/)，
+使用这些说明，您可以选取任意一个 Istio 内置的[配置档](/content/zh/docs/setup/additional-setup/config-profiles/)，
 为您的特定需求进一步定制配置。
 
 `istioctl` 命令通过命令行的选项支持完整的
-[`IstioOperator` API](/zh/docs/reference/config/istio.operator.v1alpha1/)，
+[`IstioOperator` API](/content/zh/docs/reference/config/istio.operator.v1alpha1/)，
 这些选项用于单独设置、以及接收包含 IstioOperator {{<gloss CRD>}}定制资源（CR）{{</gloss>}}的 yaml 文件。
 
 ## 先决条件 {#prerequisites}
 
 开始之前，检查下列先决条件：
 
-1. [下载 Istio 发行版](/zh/docs/setup/getting-started/#download)。
-1. 执行必要的[平台安装](/zh/docs/setup/platform-setup/)。
-1. 检查 [Pod 和服务的要求](/zh/docs/ops/deployment/requirements/)。
+1. [下载 Istio 发行版](/content/zh/docs/setup/getting-started/index.md/#download)。
+1. 执行必要的[平台安装](/content/zh/docs/setup/platform-setup/)。
+1. 检查 [Pod 和服务的要求](/content/zh/docs/ops/deployment/requirements/)。
 
 ## 使用默认配置档安装 Istio {#install-using-default-profile}
 
-最简单的选择是用下面命令安装 Istio 默认[配置档](/zh/docs/setup/additional-setup/config-profiles/)：
+最简单的选择是用下面命令安装 Istio 默认[配置档](/content/zh/docs/setup/additional-setup/config-profiles/)：
 
 {{< text bash >}}
 $ istioctl install
@@ -68,7 +68,7 @@ $ istioctl install -f my-config.yaml
 {{< /tip >}}
 
 {{< tip >}}
-完整的 API 记录在 [`IstioOperator` API 参考文档](/zh/docs/reference/config/istio.operator.v1alpha1/)。
+完整的 API 记录在 [`IstioOperator` API 参考文档](/content/zh/docs/reference/config/istio.operator.v1alpha1/)。
 通常，您可以像使用 Helm 一样，在 `istioctl` 中使用 `--set` 参数，
 并且当前 Helm 的 `values.yaml` API 向后兼容。
 唯一的区别是您必须给原有 `values.yaml` 路径前面加上 `values.` 前缀，这是 Helm 透传 API 的前缀。
@@ -225,7 +225,7 @@ $ istioctl manifest generate > $HOME/generated-manifest.yaml
 
 1. `istioctl install` 会在 Kubernetes 上下文中自动探测环境特定的设置，
    但以离线运行的 `manifest generate` 不行，而且可能导致意外结果。
-   特别是，如果 Kubernetes 环境不支持第三方服务帐户令牌，则必须确保遵循[这些步骤](/zh/docs/ops/best-practices/security/#configure-third-party-service-account-tokens)。
+   特别是，如果 Kubernetes 环境不支持第三方服务帐户令牌，则必须确保遵循[这些步骤](/content/zh/docs/ops/best-practices/security/#configure-third-party-service-account-tokens)。
 
 1. 用 `kubectl apply` 执行生成的清单，会显示临时错误，这是因为集群中的资源进入可用状态的顺序有问题。
 
@@ -281,7 +281,7 @@ $ istioctl manifest generate <your original installation options> > $HOME/genera
 $ istioctl verify-install -f $HOME/generated-manifest.yaml
 {{< /text >}}
 
-有关定制安装的更多信息，请参阅[定制安装配置](/zh/docs/setup/additional-setup/customize-installation/)。
+有关定制安装的更多信息，请参阅[定制安装配置](/content/zh/docs/setup/additional-setup/customize-installation/)。
 
 ## 卸载 Istio {#uninstall}
 
